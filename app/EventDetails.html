@@ -13,13 +13,13 @@
       <div class="navbar">
         <div class="nav-inner">
           <ul class="nav">
-
+            <li><a href="/NewEvent.html">Create Event</a></li>
           </ul>
         </div>
       </div>
-     
+
       <div ng-controller="EventController" style="padding: 0px 20px">
-        
+
         <img ng-src="{{event.imageUrl}}" alt="{{event.name}}">
         <div class="row">
           <div class="spann11">
@@ -29,10 +29,10 @@
 
         <button class="btn" ng-disabled="buttonDisabled">Disabled</button>
 
-        <div ng-bind-html-unsafe="snippet">Some title</div>        
-        <div ng-bind-html="snippet" ng-style="mystyle">Some title</div> 
+        <div ng-bind-html-unsafe="snippet">Some title</div>
+        <div ng-bind-html="snippet" ng-style="mystyle">Some title</div>
 
-        <h2 ng-show="boolValue" ng-class="myclass">Show this</h2>  
+        <h2 ng-show="boolValue" ng-class="myclass">Show this</h2>
         <h2 ng-hide="boolValue">Hide this</h2>
 
         <div class="row">
@@ -67,7 +67,7 @@
           <option selected value="intermediate">Intermediate</option>
           <option selected value="advanced">Advanced</option>
         </select>
-
+        <input type="text" ng-model="searchAbtractPattern" ng-change="searchInAbstract(searchAbtractPattern)" ng-model-options="{debounce: 300}">
         <ul class="thumbnails">
 
           <li ng-repeat="session in event.sessions | orderBy:sortorder | filter:query ">
@@ -96,7 +96,7 @@
                 <p>{{session.abstract}}</p>
               </div>
             </div>
-            
+
           </li>
         </ul>
     </div>

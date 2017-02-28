@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.controller("EventController", 
+eventsApp.controller("EventController",
 	function EventController($scope){
 
 		$scope.snippet = '<span style="color:red">Hi there</span>';
@@ -12,6 +12,8 @@ eventsApp.controller("EventController",
 		$scope.buttonDisabled = true;
 
 		$scope.sortorder = 'name';
+
+		$scope.searchAbtractPattern = '';
 
 		$scope.event = {
 			name: 'Angular Boot Camp',
@@ -39,7 +41,7 @@ eventsApp.controller("EventController",
                     level: 'Introductory',
                     abstract: 'This session will take a closer look at scopes.  Learn what they do, how they do it, and how to get them to do it for you.',
                     upVoteCount: 0
-                    
+
 				},
 				{
 					name: 'Well behaved controllers',
@@ -52,6 +54,13 @@ eventsApp.controller("EventController",
 			]
 		}
 
+    $scope.searchInAbstract = function(pattern){
+			for(var i in $scope.event.sessions){
+				if($scope.event.sessions[i].abstract.search(pattern)>-1){
+					console.log($scope.event.sessions[i]);
+				}
+			}
+		};
 		$scope.upVoteSession = function(session){
 			session.upVoteCount++;
 		}
